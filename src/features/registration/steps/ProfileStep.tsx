@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { User, MapPin, Briefcase, Heart, Sparkles } from 'lucide-react';
-import { cn } from '../../../components/ui/Stepper';
+
 
 export const ProfileStep: React.FC = () => {
     const { profile, behavior, updateProfile, updateBehavior, nextStep } = useRegistrationStore();

@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
-import { Upload, Palette, Image as ImageIcon } from 'lucide-react';
+import { Upload, Palette } from 'lucide-react';
 import { cn } from '../../../components/ui/Stepper';
 
 export const BrandingStep: React.FC = () => {
     const { branding, updateBranding, nextStep, prevStep } = useRegistrationStore();
-    const fileInputRef = useRef<HTMLInputElement>(null);
+    // const fileInputRef = useRef<HTMLInputElement>(null); // Removido pois não é utilizado
 
     const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         updateBranding({ primaryColor: e.target.value });
