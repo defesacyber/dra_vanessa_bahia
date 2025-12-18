@@ -27,7 +27,7 @@ export const FinancialPanel: React.FC = () => {
     ]);
 
     const cycle = BillingService.getCurrentCycle();
-    const { total, details } = useMemo(() => BillingService.calculateEstimate(patients), [patients, cycle]);
+    const { total, details } = useMemo(() => BillingService.calculateEstimate(patients), [patients]);
 
     const activeCount = patients.filter(p => p.status === 'ACTIVE').length;
 

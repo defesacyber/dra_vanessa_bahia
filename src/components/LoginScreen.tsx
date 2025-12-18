@@ -1,4 +1,5 @@
 import React from 'react';
+import type { HTMLImageElement } from 'react';
 
 interface LoginScreenProps {
   onLogin: (role: 'client' | 'professional') => void;

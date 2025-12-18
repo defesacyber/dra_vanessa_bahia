@@ -2,7 +2,7 @@ import { PhilosophicalLabel, PhilosophicalPlan } from "../types";
 import { getProfessionalBrand } from "./mockBackend";
 
 // Helper for Fetch
-async function postToApi<T>(endpoint: string, body: any): Promise<T> {
+async function postToApi<T, B = Record<string, unknown>>(endpoint: string, body: B): Promise<T> {
   const response = await fetch(`/api${endpoint}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import type { HTMLDivElement } from 'react';
 import { ChatMessage, PhilosophicalLabel } from '../types';
 import { chatWithPhilosopher } from '../services/geminiService';
 

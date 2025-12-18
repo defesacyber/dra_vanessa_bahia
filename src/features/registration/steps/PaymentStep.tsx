@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import type { HTMLInputElement } from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { CreditCard, Lock, ShieldCheck } from 'lucide-react';
 

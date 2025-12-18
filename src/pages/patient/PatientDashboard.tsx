@@ -99,8 +99,8 @@ export const PatientDashboard: React.FC = () => {
     });
   };
 
-  const handleSelectChoice = (choice: SubstitutionChoice) => {
-    console.log('Substituição selecionada:', choice);
+  const handleSelectChoice = (_choice: SubstitutionChoice) => {
+    // Substituição selecionada: choice
     setShowSubstitutionModal(false);
     clearResponse();
   };
@@ -144,7 +144,7 @@ export const PatientDashboard: React.FC = () => {
         {todayMessage && (
           <DailyMessageCard
             message={todayMessage}
-            onAction={() => console.log('Message action:', todayMessage.action)}
+            onAction={() => { /* Message action: todayMessage.action */ }}
           />
         )}
 
@@ -228,7 +228,7 @@ export const PatientDashboard: React.FC = () => {
         response={response}
         userRole="patient"
         onSelectChoice={handleSelectChoice}
-        onContact={() => console.log('Contact nutritionist')}
+        onContact={() => { /* Contact nutritionist */ }}
       />
 
       {/* Loading Overlay */}

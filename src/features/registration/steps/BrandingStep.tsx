@@ -1,4 +1,5 @@
 import React from 'react';
+import type { HTMLInputElement } from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { Upload, Palette } from 'lucide-react';
 import { cn } from '../../../components/ui/Stepper';

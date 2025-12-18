@@ -72,7 +72,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setState(prev => ({ ...prev, isLoading: false, error: data.error || 'Erro ao fazer login' }));
         return { success: false, error: data.error || 'Credenciais inválidas' };
       }
-    } catch (error) {
+    } catch {
       const message = 'Erro de conexão. Tente novamente.';
       setState(prev => ({ ...prev, isLoading: false, error: message }));
       return { success: false, error: message };
@@ -104,7 +104,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setState(prev => ({ ...prev, isLoading: false, error: data.error || 'Erro ao fazer login' }));
         return { success: false, error: data.error || 'Código de acesso inválido' };
       }
-    } catch (error) {
+    } catch {
       const message = 'Erro de conexão. Tente novamente.';
       setState(prev => ({ ...prev, isLoading: false, error: message }));
       return { success: false, error: message };

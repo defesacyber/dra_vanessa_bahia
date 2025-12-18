@@ -50,7 +50,7 @@ router.get('/ready', async (_req: Request, res: Response) => {
       status: 'ok',
       latencyMs: Date.now() - start,
     };
-  } catch (error) {
+  } catch {
     health.status = 'degraded';
     health.checks!.gemini = {
       status: 'error',

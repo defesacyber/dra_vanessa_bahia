@@ -245,7 +245,7 @@ router.post('/', async (req: Request, res: Response) => {
     return res.status(403).json({ error: 'Apenas nutricionistas podem criar mensagens' });
   }
   
-  const { patient_id: _patientId, title, body, action, tone, category } = req.body;
+  const { title, body, action, tone, category } = req.body;
   
   if (!title || !body || !action) {
     return res.status(400).json({ error: 'title, body e action são obrigatórios' });

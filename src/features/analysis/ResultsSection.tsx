@@ -168,7 +168,7 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({ result }) => {
                         calories: String(result.balanceScore),
                         analysis: result.nutritionalContext,
                         prescription: result.nutritionalPrescription,
-                    } as any} />
+                    }} />
                 </div>
 
             </div>

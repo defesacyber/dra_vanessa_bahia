@@ -1,4 +1,5 @@
 import React from 'react';
+import type { HTMLInputElement, HTMLSelectElement, HTMLTextAreaElement } from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { User, MapPin, Briefcase, Heart, Sparkles } from 'lucide-react';
 

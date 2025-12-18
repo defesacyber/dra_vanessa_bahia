@@ -13,7 +13,6 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
-declare const __importMeta: ImportMeta;
 
 export const env = {
   API_BASE_URL: (import.meta as unknown as ImportMeta).env.VITE_API_BASE_URL || '',

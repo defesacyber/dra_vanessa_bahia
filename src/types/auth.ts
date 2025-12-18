@@ -1,3 +1,4 @@
+import type * as React from 'react';
 // ============================================
 // Authentication & Authorization Types
 // Multi-tenant: N Nutricionistas, cada um com N Pacientes
