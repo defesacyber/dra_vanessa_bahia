@@ -1,5 +1,5 @@
+/// <reference lib="dom" />
 import React, { useState } from 'react';
-import type { HTMLInputElement } from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { CreditCard, Lock, ShieldCheck } from 'lucide-react';
 
@@ -24,7 +24,7 @@ export const PaymentStep: React.FC = () => {
         payment.cvv &&
         payment.authorized;
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<any>) => {
         const { name, value, type, checked } = e.target;
         updatePayment({ [name]: type === 'checkbox' ? checked : value });
     };
