@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #F5F1E8;
+    /* bg-tempera-ivory */
+    color: #2C3E2F;
+    /* text-tempera-deep */
+    font-family: "Crimson Text", serif;
+    /* font-body */
+    @apply antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Cormorant Garamond", serif;
+    /* font-serif */
+    font-weight: 700;
+    color: #2C3E2F;
+    /* text-tempera-deep */
+  }
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A67C52;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8e6a45;
+}

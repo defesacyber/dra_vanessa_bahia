@@ -1,0 +1,135 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "logout": "Logout",
+    "newAnalysis": "New Consultation"
+  },
+  "brand": {
+    "name": "NutriPhilosophy",
+    "tagline": "Integrative Nutrition with Philosophical Wisdom",
+    "description": "Philosophical support for nutritionists seeking holistic patient treatment"
+  },
+  "home": {
+    "welcome": "Welcome to NutriPhilosophy",
+    "tagline": "Integrative Nutrition with Philosophical Wisdom",
+    "question": "What is your patient's nutritional challenge?",
+    "placeholder": "Ex: Patient struggling with diet adherence, reports emotional eating when anxious, seeks sustainable weight loss but has history of restrictive diets...",
+    "description": "Describe the patient's context, dietary challenges, and goals. AI will suggest integrative approaches combining clinical nutrition with philosophical principles.",
+    "analyze": "Generate Integrative Analysis",
+    "characters": "characters"
+  },
+  "analysis": {
+    "analyzing": "Analyzing case...",
+    "results": "Integrative Analysis",
+    "nutritionalContext": "Nutritional Context",
+    "challenges": "Identified Challenges",
+    "goals": "Suggested Goals",
+    "philosophicalSupport": "Philosophical Support",
+    "mindsetShifts": "Mindset Shifts",
+    "practicalExercises": "Practical Exercises",
+    "weeklyFocus": "Weekly Focus",
+    "dailyReflection": "Daily Reflection",
+    "prescription": "Integrated Prescription",
+    "balanceScore": "Mind-Body Balance",
+    "sustainabilityScore": "Sustainability"
+  },
+  "history": {
+    "title": "Consultation History",
+    "clear": "Clear History",
+    "empty": "No previous consultations"
+  },
+  "philosophy": {
+    "thomism": "Thomism",
+    "thomismDesc": "Cardinal virtues, natural order, integral human good",
+    "mindfulness": "Mindful Eating",
+    "mindfulnessDesc": "Presence and full attention during meals",
+    "holistic": "Holistic Approach",
+    "holisticDesc": "Body, mind and spirit in balance"
+  },
+  "professional": {
+    "portal": "Nutritionist Portal",
+    "clients": "My Patients",
+    "settings": "Settings",
+    "invite": "Invite Patient",
+    "clientList": "Patient Portfolio",
+    "planTitle": "Integrative Nutritional Plan",
+    "primaryGoal": "Primary Goal",
+    "secondaryGoals": "Secondary Goals",
+    "dietaryRestrictions": "Dietary Restrictions",
+    "philosophicalFramework": "Philosophical Approach",
+    "morningRitual": "Morning Ritual",
+    "eveningRitual": "Evening Ritual",
+    "weeklyChallenge": "Weekly Challenge",
+    "notes": "Clinical Notes",
+    "nextSessionFocus": "Next Session Focus",
+    "sendPlan": "Send Plan to Patient",
+    "aiAssistant": "AI Assistant for Integrative Plan",
+    "aiPlaceholder": "Describe the patient's profile and objectives...",
+    "suggestPlan": "Generate Plan Suggestion",
+    "generating": "Generating...",
+    "crn": "License Number",
+    "specialty": "Specialty"
+  },
+  "client": {
+    "myPlan": "My Nutritional Plan",
+    "active": "In Treatment",
+    "inactive": "Inactive",
+    "paused": "Paused",
+    "sessions": "Sessions completed",
+    "lastSession": "Last session"
+  },
+  "chat": {
+    "title": "Integrative Consultant",
+    "subtitle": "Ask questions about the suggested approach",
+    "placeholder": "Ask about the analysis or request more details...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "emptyState": "Discuss the integrative analysis. Ask how to apply philosophical principles to the patient's case."
+  },
+  "login": {
+    "title": "Access NutriPhilosophy",
+    "client": "I'm a Patient",
+    "professional": "I'm a Nutritionist",
+    "subtitle": "Select your access profile"
+  },
+  "footer": {
+    "copyright": "© {year} NutriPhilosophy. Technology for integrative nutrition.",
+    "disclaimer": "Professional support tool. Does not replace individualized clinical assessment."
+  },
+  "actions": {
+    "print": "Print",
+    "share": "Share",
+    "export": "Export PDF",
+    "copied": "Copied to clipboard!"
+  },
+  "validation": {
+    "required": "This field is required",
+    "tooLong": "Text too long",
+    "tooShort": "Text too short"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "Connection error. Check your internet.",
+    "analysis": "Could not process the analysis. Check your connection or try again.",
+    "rateLimit": "Too many requests. Please wait a moment."
+  },
+  "onboarding": {
+    "welcome": "Set Up Your Professional Profile",
+    "step1Title": "Professional Information",
+    "step2Title": "Philosophical Approach",
+    "step3Title": "Visual Customization",
+    "nameLabel": "Your professional name",
+    "crnLabel": "License number",
+    "specialtyLabel": "Specialty",
+    "approachLabel": "Which philosophical approach suits you best?",
+    "customInstructionsLabel": "Custom instructions for AI",
+    "customInstructionsHint": "Ex: 'Use welcoming language', 'Be direct and objective'",
+    "finish": "Complete Setup"
+  }
+}

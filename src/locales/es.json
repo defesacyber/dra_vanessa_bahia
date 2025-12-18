@@ -1,0 +1,135 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "logout": "Salir",
+    "newAnalysis": "Nueva Consulta"
+  },
+  "brand": {
+    "name": "NutriFilosofía",
+    "tagline": "Nutrición Integrativa con Sabiduría Filosófica",
+    "description": "Apoyo filosófico para nutricionistas que buscan el tratamiento integral del paciente"
+  },
+  "home": {
+    "welcome": "Bienvenido a NutriFilosofía",
+    "tagline": "Nutrición Integrativa con Sabiduría Filosófica",
+    "question": "¿Cuál es el desafío nutricional de su paciente?",
+    "placeholder": "Ej: Paciente con dificultad de adherencia a la dieta, reporta comer emocional cuando está ansioso, busca adelgazamiento sostenible pero tiene historial de dietas restrictivas...",
+    "description": "Describa el contexto del paciente, sus desafíos alimentarios y objetivos. La IA sugerirá enfoques integrativos combinando nutrición clínica con principios filosóficos.",
+    "analyze": "Generar Análisis Integrativo",
+    "characters": "caracteres"
+  },
+  "analysis": {
+    "analyzing": "Analizando caso...",
+    "results": "Análisis Integrativo",
+    "nutritionalContext": "Contexto Nutricional",
+    "challenges": "Desafíos Identificados",
+    "goals": "Metas Sugeridas",
+    "philosophicalSupport": "Apoyo Filosófico",
+    "mindsetShifts": "Cambios de Mentalidad",
+    "practicalExercises": "Ejercicios Prácticos",
+    "weeklyFocus": "Enfoque de la Semana",
+    "dailyReflection": "Reflexión Diaria",
+    "prescription": "Prescripción Integrada",
+    "balanceScore": "Equilibrio Mente-Cuerpo",
+    "sustainabilityScore": "Sostenibilidad"
+  },
+  "history": {
+    "title": "Historial de Consultas",
+    "clear": "Limpiar Historial",
+    "empty": "Sin consultas anteriores"
+  },
+  "philosophy": {
+    "thomism": "Tomismo",
+    "thomismDesc": "Virtudes cardinales, orden natural, bien integral del ser humano",
+    "mindfulness": "Alimentación Consciente",
+    "mindfulnessDesc": "Presencia y atención plena en las comidas",
+    "holistic": "Enfoque Holístico",
+    "holisticDesc": "Cuerpo, mente y espíritu en equilibrio"
+  },
+  "professional": {
+    "portal": "Portal del Nutricionista",
+    "clients": "Mis Pacientes",
+    "settings": "Configuración",
+    "invite": "Invitar Paciente",
+    "clientList": "Cartera de Pacientes",
+    "planTitle": "Plan Nutricional Integrativo",
+    "primaryGoal": "Meta Principal",
+    "secondaryGoals": "Metas Secundarias",
+    "dietaryRestrictions": "Restricciones Alimentarias",
+    "philosophicalFramework": "Enfoque Filosófico",
+    "morningRitual": "Ritual Matutino",
+    "eveningRitual": "Ritual Nocturno",
+    "weeklyChallenge": "Desafío de la Semana",
+    "notes": "Observaciones Clínicas",
+    "nextSessionFocus": "Enfoque de la Próxima Sesión",
+    "sendPlan": "Enviar Plan al Paciente",
+    "aiAssistant": "Asistente IA para Plan Integrativo",
+    "aiPlaceholder": "Describa el perfil y objetivos del paciente...",
+    "suggestPlan": "Generar Sugerencia de Plan",
+    "generating": "Generando...",
+    "crn": "Matrícula Profesional",
+    "specialty": "Especialidad"
+  },
+  "client": {
+    "myPlan": "Mi Plan Nutricional",
+    "active": "En Tratamiento",
+    "inactive": "Inactivo",
+    "paused": "Pausado",
+    "sessions": "Consultas realizadas",
+    "lastSession": "Última consulta"
+  },
+  "chat": {
+    "title": "Consultor Integrativo",
+    "subtitle": "Resuelva dudas sobre el enfoque sugerido",
+    "placeholder": "Pregunte sobre el análisis o solicite más detalles...",
+    "send": "Enviar",
+    "thinking": "Pensando...",
+    "emptyState": "Converse sobre el análisis integrativo. Pregunte cómo aplicar los principios filosóficos al caso del paciente."
+  },
+  "login": {
+    "title": "Acceda a NutriFilosofía",
+    "client": "Soy Paciente",
+    "professional": "Soy Nutricionista",
+    "subtitle": "Seleccione su perfil de acceso"
+  },
+  "footer": {
+    "copyright": "© {year} NutriFilosofía. Tecnología para nutrición integrativa.",
+    "disclaimer": "Herramienta de apoyo profesional. No sustituye la evaluación clínica individualizada."
+  },
+  "actions": {
+    "print": "Imprimir",
+    "share": "Compartir",
+    "export": "Exportar PDF",
+    "copied": "¡Copiado al portapapeles!"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "tooLong": "Texto demasiado largo",
+    "tooShort": "Texto demasiado corto"
+  },
+  "errors": {
+    "generic": "Algo salió mal. Inténtelo de nuevo.",
+    "network": "Error de conexión. Verifique su internet.",
+    "analysis": "No se pudo procesar el análisis. Verifique su conexión o inténtelo de nuevo.",
+    "rateLimit": "Demasiadas solicitudes. Espere un momento."
+  },
+  "onboarding": {
+    "welcome": "Configure su Perfil Profesional",
+    "step1Title": "Datos Profesionales",
+    "step2Title": "Enfoque Filosófico",
+    "step3Title": "Personalización Visual",
+    "nameLabel": "Su nombre profesional",
+    "crnLabel": "Número de matrícula",
+    "specialtyLabel": "Especialidad",
+    "approachLabel": "¿Qué enfoque filosófico combina más con usted?",
+    "customInstructionsLabel": "Instrucciones personalizadas para la IA",
+    "customInstructionsHint": "Ej: 'Use lenguaje acogedor', 'Sea directo y objetivo'",
+    "finish": "Completar Configuración"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "logout": "Sair",
+    "newAnalysis": "Nova Consulta"
+  },
+  "brand": {
+    "name": "Dra. Vanessa Bahia",
+    "tagline": "Seu cuidado diário",
+    "description": "Nutrindo corpo e mente, com reflexão e tempero"
+  },
+  "home": {
+    "welcome": "Bem-vindo",
+    "tagline": "Seu cuidado diário",
+    "question": "Qual é o desafio nutricional do seu paciente?",
+    "placeholder": "Ex: Paciente com dificuldade de adesão à dieta, relata comer emocional quando está ansioso, busca emagrecimento sustentável mas tem histórico de dietas restritivas...",
+    "description": "Descreva o contexto do paciente, seus desafios alimentares e objetivos. A IA irá sugerir abordagens integrativas para o cuidado integral.",
+    "analyze": "Gerar Análise Integrativa",
+    "characters": "caracteres"
+  },
+  "analysis": {
+    "analyzing": "Analisando caso...",
+    "results": "Análise Integrativa",
+    "nutritionalContext": "Contexto Nutricional",
+    "challenges": "Desafios Identificados",
+    "goals": "Metas Sugeridas",
+    "philosophicalSupport": "Apoio Reflexivo",
+    "mindsetShifts": "Mudanças de Mentalidade",
+    "practicalExercises": "Exercícios Práticos",
+    "weeklyFocus": "Foco da Semana",
+    "dailyReflection": "Reflexão Diária",
+    "prescription": "Prescrição Integrada",
+    "balanceScore": "Equilíbrio Mente-Corpo",
+    "sustainabilityScore": "Sustentabilidade"
+  },
+  "history": {
+    "title": "Histórico de Consultas",
+    "clear": "Limpar Histórico",
+    "empty": "Nenhuma consulta anterior"
+  },
+  "philosophy": {
+    "thomism": "Tomismo",
+    "thomismDesc": "Virtudes cardeais, ordem natural, bem integral do ser humano",
+    "mindfulness": "Mindful Eating",
+    "mindfulnessDesc": "Presença e atenção plena nas refeições",
+    "holistic": "Abordagem Holística",
+    "holisticDesc": "Corpo, mente e espírito em equilíbrio"
+  },
+  "professional": {
+    "portal": "Portal do Nutricionista",
+    "clients": "Meus Pacientes",
+    "settings": "Configurações",
+    "invite": "Convidar Paciente",
+    "clientList": "Carteira de Pacientes",
+    "planTitle": "Plano Nutricional Integrativo",
+    "primaryGoal": "Meta Principal",
+    "secondaryGoals": "Metas Secundárias",
+    "dietaryRestrictions": "Restrições Alimentares",
+    "philosophicalFramework": "Abordagem Integrativa",
+    "morningRitual": "Ritual Matinal",
+    "eveningRitual": "Ritual Noturno",
+    "weeklyChallenge": "Desafio da Semana",
+    "notes": "Observações Clínicas",
+    "nextSessionFocus": "Foco da Próxima Sessão",
+    "sendPlan": "Enviar Plano ao Paciente",
+    "aiAssistant": "Assistente IA para Plano Integrativo",
+    "aiPlaceholder": "Descreva o perfil e objetivos do paciente...",
+    "suggestPlan": "Gerar Sugestão de Plano",
+    "generating": "Gerando...",
+    "crn": "CRN",
+    "specialty": "Especialidade"
+  },
+  "client": {
+    "myPlan": "Meu Plano Nutricional",
+    "active": "Em Tratamento",
+    "inactive": "Inativo",
+    "paused": "Pausado",
+    "sessions": "Consultas realizadas",
+    "lastSession": "Última consulta"
+  },
+  "chat": {
+    "title": "Consultor Integrativo",
+    "subtitle": "Tire dúvidas sobre a abordagem sugerida",
+    "placeholder": "Pergunte sobre a análise ou peça mais detalhes...",
+    "send": "Enviar",
+    "thinking": "Pensando...",
+    "emptyState": "Converse sobre a análise integrativa. Pergunte como aplicar os princípios ao caso do paciente."
+  },
+  "login": {
+    "title": "Acesse sua conta",
+    "client": "Sou Paciente",
+    "professional": "Sou Nutricionista",
+    "subtitle": "Selecione seu perfil de acesso"
+  },
+  "footer": {
+    "copyright": "© {year} Dra. Vanessa Bahia. Nutrição Integrativa.",
+    "disclaimer": "Ferramenta de apoio profissional. Não substitui avaliação clínica individualizada."
+  },
+  "actions": {
+    "print": "Imprimir",
+    "share": "Compartilhar",
+    "export": "Exportar PDF",
+    "copied": "Copiado para a área de transferência!"
+  },
+  "validation": {
+    "required": "Este campo é obrigatório",
+    "tooLong": "Texto muito longo",
+    "tooShort": "Texto muito curto"
+  },
+  "errors": {
+    "generic": "Algo deu errado. Tente novamente.",
+    "network": "Erro de conexão. Verifique sua internet.",
+    "analysis": "Não foi possível processar a análise. Verifique sua conexão ou tente novamente.",
+    "rateLimit": "Muitas requisições. Aguarde um momento."
+  },
+  "onboarding": {
+    "welcome": "Configure seu Perfil Profissional",
+    "step1Title": "Dados Profissionais",
+    "step2Title": "Abordagem Integrativa",
+    "step3Title": "Personalização Visual",
+    "nameLabel": "Seu nome profissional",
+    "crnLabel": "Número do CRN",
+    "specialtyLabel": "Especialidade",
+    "approachLabel": "Qual abordagem mais combina com você?",
+    "customInstructionsLabel": "Instruções personalizadas para a IA",
+    "customInstructionsHint": "Ex: 'Use linguagem acolhedora', 'Seja direto e objetivo'",
+    "finish": "Concluir Configuração"
+  }
+}
