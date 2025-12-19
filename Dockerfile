@@ -16,6 +16,12 @@ RUN npm ci --include=dev
 COPY . .
 RUN npm run build
 
+# Debug: Check if files were generated
+RUN echo "=== Checking dist folder ===" && \
+  ls -la dist/ && \
+  echo "=== Checking dist/server ===" && \
+  ls -la dist/server/ || echo "dist/server not found!"
+
 # Prune dev dependencies after build
 RUN npm prune --production
 

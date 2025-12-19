@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"tsx server/index.ts\" \"vite\"",
-    "build": "tsc -p tsconfig.server.json && vite build",
+    "build": "npx tsc -p tsconfig.server.json && vite build",
     "preview": "vite preview",
     "start": "NODE_ENV=production node dist/server/index.js",
     "lint": "eslint src server --ext .ts,.tsx",
