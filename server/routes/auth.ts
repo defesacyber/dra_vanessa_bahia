@@ -8,6 +8,13 @@ import { config } from '../config/env.js';
 const router = Router();
 
 // ============================================
+// Safety Checks
+// ============================================
+if (config.NODE_ENV === 'production' && (!config.JWT_SECRET || config.JWT_SECRET.length < 32)) {
+  logger.fatal('JWT_SECRET is not set or too short in production! Auth will fail.');
+}
+
+// ============================================
 // Mock Database (substituir por banco real)
 // Multi-tenant: N nutricionistas, cada um com N pacientes
 // ============================================
@@ -165,15 +172,16 @@ router.post('/nutritionist/login', async (req: Request, res: Response) => {
       },
       token,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const err = error as Error;
     logger.error({
-      error: error.message,
-      stack: error.stack
+      error: err.message,
+      stack: err.stack
     }, 'Error in nutritionist login');
     return res.status(500).json({
       success: false,
       error: 'Erro interno do servidor',
-      message: config.NODE_ENV === 'development' ? error.message : undefined,
+      message: config.NODE_ENV === 'development' ? err.message : undefined,
     });
   }
 });
@@ -312,15 +320,19 @@ router.post('/patient/login', async (req: Request, res: Response) => {
       },
       token,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const err = error as Error;
     logger.error({
-      error: error.message,
-      stack: error.stack
+      error: err.message,
+      stack: err.stack
     }, 'Error in patient login');
     return res.status(500).json({
       success: false,
       error: 'Erro interno do servidor',
-      debug: error.message, // Temporarily expose error for faster debugging
+      debug: err.message, // Temporarily expose error for faster debugging
+      hint: (config.NODE_ENV === 'production' && (!config.JWT_SECRET || config.JWT_SECRET.length < 32))
+        ? 'JWT_SECRET missing'
+        : undefined
     });
   }
 });

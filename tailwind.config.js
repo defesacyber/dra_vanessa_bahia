@@ -8,11 +8,11 @@ export default {
     extend: {
       colors: {
         tempera: {
-          olive: '#556B55',   // Primary
-          deep: '#2C3E2F',    // Secondary / Text
-          gold: '#A67C52',    // Accent
-          ivory: '#F5F1E8',   // Background
-          cream: '#E8DCC8',   // Highlight
+          olive: '#314E2B',   // New deeper green from mockup
+          deep: '#1F2E1F',    // Darker forest green from mockup
+          gold: '#A67C52',    // Keep accent gold
+          ivory: '#F6F3EC',   // Refined ivory from mockup
+          stone: '#6B705C',   // Added stone color from mockup
         },
         brand: {
           primary: 'var(--brand-primary, #1c1917)',

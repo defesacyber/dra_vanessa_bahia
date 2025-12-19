@@ -32,81 +32,77 @@ export const PatientLoginScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-tempera-ivory flex">
-      {/* Left Side - Image (Reused or distinct for patient? Using same for brand consistency) */}
-      <div className="hidden lg:block w-1/2 relative overflow-hidden">
-        <div className="absolute inset-0 bg-tempera-deep/30 mix-blend-multiply z-10" />
+    <div className="min-h-screen bg-tempera-ivory text-tempera-deep flex flex-col items-center justify-center px-4 font-serif">
+      {/* LOGO */}
+      <div className="mb-10 text-center animate-fade-in text-tempera-deep">
         <img
-          src="/tempera.jpg"
-          alt="Alegoria da Temperança"
-          className="w-full h-full object-cover grayscale-[10%] sepia-[15%]"
+          src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Leaf_icon.svg"
+          alt="Têmpera Logo"
+          className="mx-auto w-20 mb-3 opacity-90"
         />
-        <div className="absolute bottom-12 left-12 z-20 text-white max-w-md">
-          <p className="font-serif italic text-2xl mb-2">"O equilíbrio não é algo que você encontra, é algo que você cria."</p>
-          <p className="text-sm opacity-90">— Têmpera Nutrição</p>
-        </div>
+        <h1 className="text-4xl font-semibold tracking-tight">Têmpera</h1>
+        <p className="text-sm uppercase tracking-[0.25em] text-tempera-stone font-sans">Área do Paciente</p>
       </div>
 
-      {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-tempera-ivory">
-        <div className="max-w-md w-full space-y-8">
+      {/* CARD DE LOGIN */}
+      <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-3xl w-full max-w-md p-10 border border-tempera-stone/20 animate-fade-in">
+        <div className="text-center mb-6">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-tempera-olive flex items-center justify-center text-white font-serif text-2xl shadow-md border-2 border-tempera-stone/20">
+            T
+          </div>
+          <h2 className="text-2xl font-semibold">Bem-vindo(a)</h2>
+          <p className="text-tempera-stone text-sm mt-2">Insira seu código de acesso pessoal</p>
+        </div>
 
-          <div className="text-center space-y-2">
-            <h1 className="font-serif text-4xl font-bold text-tempera-deep tracking-tight">
-              TÊMPERA
-            </h1>
-            <p className="text-tempera-gold uppercase tracking-[0.2em] text-sm">
-              Área do Paciente
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="accessCode" className="block text-sm mb-1 font-medium">Código de Acesso</label>
+            <input
+              id="accessCode"
+              type="text"
+              value={accessCode}
+              onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+              placeholder="CODE-123"
+              className="w-full border border-stone-200 rounded-xl p-3 focus:ring-2 focus:ring-tempera-olive focus:border-tempera-olive focus:outline-none transition bg-white/50 text-center text-lg tracking-widest uppercase"
+              maxLength={12}
+              required
+            />
+            <p className="text-xs text-stone-400 mt-2 text-center italic">
+              O código foi enviado pela sua nutricionista
             </p>
           </div>
 
-          <div className="bg-white p-8 rounded-sm shadow-[0_4px_20px_-4px_rgba(44,62,47,0.1)] border border-tempera-gold/20 space-y-6">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-tempera-olive flex items-center justify-center text-white font-serif text-2xl shadow-md border-2 border-tempera-gold">
-                T
-              </div>
-              <h2 className="font-serif text-2xl text-tempera-deep">Bem-vindo(a)</h2>
-              <p className="text-stone-500 text-sm mt-2">Insira seu código de acesso pessoal</p>
+          {error && (
+            <div className="p-3 bg-red-50 text-red-700 text-sm border border-red-100 rounded-xl">
+              {error}
             </div>
+          )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-sm font-medium text-tempera-deep mb-1">Código de Acesso</label>
-                <input
-                  type="text"
-                  value={accessCode}
-                  onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
-                  className="w-full px-4 py-3 bg-tempera-ivory/50 border border-tempera-gold/30 rounded-sm focus:ring-1 focus:ring-tempera-olive focus:border-tempera-olive outline-none transition-all placeholder:text-stone-400 text-center text-lg font-serif tracking-widest uppercase"
-                  placeholder="CODE-123"
-                  maxLength={8}
-                  required
-                />
-                <p className="text-xs text-stone-400 mt-2 text-center italic">
-                  O código foi enviado pela sua nutricionista
-                </p>
-              </div>
-
-              {error && (
-                <div className="p-3 bg-red-50 text-red-700 text-sm border border-red-100 rounded-sm">
-                  {error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={isLoading || accessCode.length < 4}
-                className="w-full py-3 bg-tempera-olive text-white font-serif text-lg tracking-wide hover:bg-tempera-deep transition-all shadow-md disabled:opacity-50"
-              >
-                {isLoading ? 'Acessando...' : 'Entrar'}
-              </button>
-            </form>
-          </div>
-
-          <div className="text-center text-xs text-tempera-deep/40 font-serif italic">
-            Nutrição Integrativa · Filosofia Aplicada
-          </div>
-        </div>
+          <button
+            type="submit"
+            disabled={isLoading || accessCode.length < 4}
+            className="w-full bg-tempera-olive hover:bg-tempera-olive/90 text-white py-3 rounded-xl font-medium tracking-wide transition shadow-md disabled:opacity-50"
+          >
+            {isLoading ? 'Acessando...' : 'Entrar'}
+          </button>
+        </form>
       </div>
+
+      {/* FOOTER */}
+      <p className="mt-10 text-xs text-tempera-stone/60 tracking-wider italic animate-fade-in text-center font-sans">
+        Nutrição Integrativa · Filosofia Aplicada
+      </p>
+
+      {/* Animation Styles */}
+      <style>{`
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-in-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 };

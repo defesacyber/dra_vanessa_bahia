@@ -34,92 +34,88 @@ export const NutritionistLoginScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-tempera-ivory flex">
-      {/* Left Side - Image */}
-      <div className="hidden lg:block w-1/2 relative overflow-hidden">
-        <div className="absolute inset-0 bg-tempera-olive/20 mix-blend-multiply z-10" />
+    <div className="min-h-screen bg-tempera-ivory text-tempera-deep flex flex-col items-center justify-center px-4 font-serif">
+      {/* LOGO */}
+      <div className="mb-10 text-center animate-fade-in text-tempera-deep">
         <img
-          src="/tempera.jpg"
-          alt="Alegoria da Temperança"
-          className="w-full h-full object-cover grayscale-[20%] sepia-[10%]"
+          src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Leaf_icon.svg"
+          alt="Têmpera Logo"
+          className="mx-auto w-20 mb-3 opacity-90"
         />
-        <div className="absolute bottom-12 left-12 z-20 text-white max-w-md">
-          <p className="font-serif italic text-2xl mb-2">"A temperança é a virtude que dispõe a razão a governar as paixões."</p>
-          <p className="text-sm opacity-90">— São Tomás de Aquino</p>
+        <h1 className="text-4xl font-semibold tracking-tight">Têmpera</h1>
+        <p className="text-sm uppercase tracking-[0.25em] text-tempera-stone font-sans">Nutrição Integrativa</p>
+      </div>
+
+      {/* CARD DE LOGIN */}
+      <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-3xl w-full max-w-md p-10 border border-tempera-stone/20 animate-fade-in">
+        <h2 className="text-2xl text-center font-semibold mb-6">Portal do Nutricionista</h2>
+        <p className="text-center text-xs text-tempera-stone mb-8 italic">
+          <span>swphrosýnē · temperantia</span>
+        </p>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="email" className="block text-sm mb-1 font-medium">E-mail</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="nome@tempera.com.br"
+              className="w-full border border-stone-200 rounded-xl p-3 focus:ring-2 focus:ring-tempera-olive focus:border-tempera-olive focus:outline-none transition bg-white/50"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="senha" className="block text-sm mb-1 font-medium">Senha</label>
+            <input
+              id="senha"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              className="w-full border border-stone-200 rounded-xl p-3 focus:ring-2 focus:ring-tempera-olive focus:border-tempera-olive focus:outline-none transition bg-white/50"
+              required
+            />
+          </div>
+
+          {error && (
+            <div className="p-3 bg-red-50 text-red-700 text-sm border border-red-100 rounded-xl">
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full bg-tempera-olive hover:bg-tempera-olive/90 text-white py-3 rounded-xl font-medium tracking-wide transition shadow-md disabled:opacity-50"
+          >
+            {isLoading ? 'Entrando...' : 'Entrar'}
+          </button>
+        </form>
+
+        <div className="mt-8 text-center">
+          <Link to="/nutri/register" className="text-sm text-tempera-olive hover:underline decoration-1 underline-offset-4">
+            Solicitar credenciamento
+          </Link>
         </div>
       </div>
 
-      {/* Right Side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-tempera-ivory">
-        <div className="max-w-md w-full space-y-8">
+      {/* FOOTER */}
+      <p className="mt-10 text-xs text-tempera-stone/60 tracking-wider italic animate-fade-in text-center font-sans">
+        ἀρετή · virtus · excelência
+      </p>
 
-          <div className="text-center space-y-2">
-            <h1 className="font-serif text-4xl font-bold text-tempera-deep tracking-tight">
-              TÊMPERA
-            </h1>
-            <p className="text-tempera-gold uppercase tracking-[0.2em] text-sm">
-              Nutrição Integrativa
-            </p>
-          </div>
-
-          <div className="bg-white p-8 rounded-sm shadow-[0_4px_20px_-4px_rgba(44,62,47,0.1)] border border-tempera-gold/20 space-y-6">
-            <div className="text-center">
-              <h2 className="font-serif text-2xl text-tempera-deep">Portal do Nutricionista</h2>
-              <p className="text-stone-500 text-sm mt-2">swphrosýnē · temperantia</p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label className="block text-sm font-medium text-tempera-deep mb-1">E-mail</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-tempera-ivory/50 border border-tempera-gold/30 rounded-sm focus:ring-1 focus:ring-tempera-olive focus:border-tempera-olive outline-none transition-all placeholder:text-stone-400"
-                  placeholder="nome@tempera.com.br"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-tempera-deep mb-1">Senha</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 py-3 bg-tempera-ivory/50 border border-tempera-gold/30 rounded-sm focus:ring-1 focus:ring-tempera-olive focus:border-tempera-olive outline-none transition-all placeholder:text-stone-400"
-                  placeholder="••••••••"
-                  required
-                />
-              </div>
-
-              {error && (
-                <div className="p-3 bg-red-50 text-red-700 text-sm border border-red-100 rounded-sm">
-                  {error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full py-3 bg-tempera-olive text-white font-serif text-lg tracking-wide hover:bg-tempera-deep transition-all shadow-md disabled:opacity-50"
-              >
-                {isLoading ? 'Entrando...' : 'Acessar Portal'}
-              </button>
-            </form>
-
-            <div className="pt-6 border-t border-tempera-gold/10 text-center">
-              <Link to="/nutri/register" className="text-tempera-gold hover:text-tempera-olive transition-colors underline decoration-1 underline-offset-4">
-                Solicitar credenciamento
-              </Link>
-            </div>
-          </div>
-
-          <div className="text-center text-xs text-tempera-deep/40 font-serif italic">
-            ἀρετή · virtus · excelência
-          </div>
-        </div>
-      </div>
+      {/* Animation Styles */}
+      <style>{`
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-in-out;
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 };
