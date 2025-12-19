@@ -7,6 +7,16 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Environment files (prevent secrets from being committed)
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Compiled JavaScript files in src (TypeScript source of truth)
+src/**/*.js
+!src/**/*.config.js
+
 node_modules
 dist
 dist-ssr

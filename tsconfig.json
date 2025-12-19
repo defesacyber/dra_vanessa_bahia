@@ -25,12 +25,18 @@
     "noUnusedParameters": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@services/*": ["src/services/*"],
-      "@types": ["src/types.ts"]
-    },
-    "allowImportingTsExtensions": true,
-    "noEmit": true
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@types": [
+        "src/types.ts"
+      ]
+    }
   }
 }

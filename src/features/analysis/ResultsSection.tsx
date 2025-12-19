@@ -165,10 +165,15 @@ export const ResultsSection: React.FC<ResultsSectionProps> = ({ result }) => {
                 {/* Chat */}
                 <div className="animate-slide-up delay-400">
                     <ChatInterface analysisContext={{
-                        calories: String(result.balanceScore),
-                        analysis: result.nutritionalContext,
-                        prescription: result.nutritionalPrescription,
-                    } as any} />
+                        servingSize: result.servingSize ?? '',
+                        calories: Number(result.balanceScore ?? 0),
+                        analysis: result.nutritionalContext ?? '',
+                        prescription: result.nutritionalPrescription ?? '',
+                        virtues: result.virtues ?? [],
+                        vices: result.vices ?? [],
+                        vitamins: result.vitamins ?? [],
+                        mainIngredients: result.mainIngredients ?? [],
+                    }} />
                 </div>
 
             </div>

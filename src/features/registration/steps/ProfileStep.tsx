@@ -1,16 +1,17 @@
+/// <reference lib="dom" />
 import React from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { User, MapPin, Briefcase, Heart, Sparkles } from 'lucide-react';
-import { cn } from '../../../components/ui/Stepper';
+
 
 export const ProfileStep: React.FC = () => {
     const { profile, behavior, updateProfile, updateBehavior, nextStep } = useRegistrationStore();
 
-    const handleProfileChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const handleProfileChange = (e: React.ChangeEvent<any>) => {
         updateProfile({ [e.target.name]: e.target.value });
     };
 
-    const handleBehaviorChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const handleBehaviorChange = (e: React.ChangeEvent<any>) => {
         const { name, value } = e.target;
         // Handle number inputs specifically if needed, but here simple casting or loose types work for basic forms
         updateBehavior({ [name]: value });

@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -24,7 +25,7 @@ export const PatientRegisterScreen: React.FC = () => {
   
   const { getAuthHeaders } = useAuth();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<any>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };

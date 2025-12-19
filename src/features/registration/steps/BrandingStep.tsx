@@ -1,17 +1,18 @@
-import React, { useRef } from 'react';
+/// <reference lib="dom" />
+import React from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
-import { Upload, Palette, Image as ImageIcon } from 'lucide-react';
+import { Upload, Palette } from 'lucide-react';
 import { cn } from '../../../components/ui/Stepper';
 
 export const BrandingStep: React.FC = () => {
     const { branding, updateBranding, nextStep, prevStep } = useRegistrationStore();
-    const fileInputRef = useRef<HTMLInputElement>(null);
+    // const fileInputRef = useRef<HTMLInputElement>(null); // Removido pois não é utilizado
 
-    const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleColorChange = (e: React.ChangeEvent<any>) => {
         updateBranding({ primaryColor: e.target.value });
     };
 
-    const handleFileUpload = (field: 'photo' | 'logo' | 'watermark') => (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileUpload = (field: 'photo' | 'logo' | 'watermark') => (e: React.ChangeEvent<any>) => {
         const file = e.target.files?.[0];
         if (file) {
             // Create local URL for preview

@@ -4,12 +4,25 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { PatientRoute, NutritionistRoute } from './components/RouteGuards';
 
-// Lazy load pages - Paciente
-const PatientLoginScreen = lazy(() => import('./pages/patient/PatientLoginScreen'));
+// v3.0 - Premium Site Overhaul (2025-12-19)
+
+// Public Pages
+const Home = lazy(() => import('./pages/Home'));
+const Approach = lazy(() => import('./pages/Approach'));
+const Programs = lazy(() => import('./pages/Programs'));
+const B2B = lazy(() => import('./pages/B2B'));
+const Team = lazy(() => import('./pages/Team'));
+const Blog = lazy(() => import('./pages/Blog'));
+const FAQ = lazy(() => import('./pages/FAQ'));
+const Contact = lazy(() => import('./pages/Contact'));
+const LoginPortal = lazy(() => import('./pages/LoginPortal'));
+const PrivacyPage = lazy(() => import('./pages/Legal').then(m => ({ default: m.PrivacyPage })));
+const TermsPage = lazy(() => import('./pages/Legal').then(m => ({ default: m.TermsPage })));
+
+// Protected Screens - Patient
 const PatientDashboard = lazy(() => import('./pages/patient/PatientDashboard'));
 
-// Lazy load pages - Nutricionista
-const NutritionistLoginScreen = lazy(() => import('./pages/nutri/NutritionistLoginScreen'));
+// Protected Screens - Nutritionist
 const NutritionistRegisterScreen = lazy(() => import('./pages/nutri/NutritionistRegisterScreen'));
 const NutritionistDashboard = lazy(() => import('./pages/nutri/NutritionistDashboard'));
 const PatientListScreen = lazy(() => import('./pages/nutri/PatientListScreen'));
@@ -17,10 +30,10 @@ const PatientRegisterScreen = lazy(() => import('./pages/nutri/PatientRegisterSc
 
 // Loading fallback
 const LoadingFallback: React.FC = () => (
-  <div className="min-h-screen flex items-center justify-center bg-stone-50">
+  <div className="min-h-screen flex items-center justify-center bg-neutral-50">
     <div className="text-center">
-      <div className="w-12 h-12 border-4 border-emerald-300 border-t-emerald-600 rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-stone-600">Carregando...</p>
+      <div className="w-12 h-12 border-4 border-brand-900 border-t-brand-600 rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-brand-900 font-serif italic">Respirando...</p>
     </div>
   </div>
 );
@@ -32,90 +45,36 @@ const App: React.FC = () => {
         <PremiumNavbar />
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
-            {/* ================================
-                ROTAS DO PACIENTE (/login, /app/*)
-                ================================ */}
+            {/* PUBLIC ROUTES */}
+            <Route path="/" element={<LoginPortal />} />
+            <Route path="/inicio" element={<Home />} />
+            <Route path="/metodo" element={<Approach />} />
+            <Route path="/programas" element={<Programs />} />
+            <Route path="/para-empresas" element={<B2B />} />
+            <Route path="/equipe" element={<Team />} />
+            <Route path="/conteudos" element={<Blog />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contato" element={<Contact />} />
 
-            {/* Login do Paciente - SEM menção a nutricionista */}
-            <Route path="/acesso-paciente" element={<PatientLoginScreen />} />
+            <Route path="/privacidade" element={<Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense>} />
+            <Route path="/termos" element={<Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense>} />
 
-            {/* Área do Paciente - Protegida por role PATIENT */}
-            <Route
-              path="/app"
-              element={
-                <PatientRoute>
-                  <PatientDashboard />
-                </PatientRoute>
-              }
-            />
-            <Route
-              path="/app/*"
-              element={
-                <PatientRoute>
-                  <PatientDashboard />
-                </PatientRoute>
-              }
-            />
+            {/* PROTECTED - PATIENT */}
+            <Route path="/app" element={<PatientRoute><PatientDashboard /></PatientRoute>} />
+            <Route path="/app/*" element={<PatientRoute><PatientDashboard /></PatientRoute>} />
 
-            {/* ================================
-                ROTAS DA NUTRICIONISTA (/nutri/*)
-                ================================ */}
-
-            {/* Login da Nutricionista - Portal genérico */}
-            <Route path="/acesso-nutricionista" element={<NutritionistLoginScreen />} />
-
-            {/* Cadastro de Nutricionista */}
+            {/* PROTECTED - NUTRITIONIST */}
             <Route path="/nutri/register" element={<NutritionistRegisterScreen />} />
+            <Route path="/nutri" element={<NutritionistRoute><NutritionistDashboard /></NutritionistRoute>} />
+            <Route path="/nutri/patients" element={<NutritionistRoute><PatientListScreen /></NutritionistRoute>} />
+            <Route path="/nutri/patients/new" element={<NutritionistRoute><PatientRegisterScreen /></NutritionistRoute>} />
+            <Route path="/nutri/*" element={<NutritionistRoute><NutritionistDashboard /></NutritionistRoute>} />
 
-            {/* Dashboard da Nutricionista - Protegida */}
-            <Route
-              path="/nutri"
-              element={
-                <NutritionistRoute>
-                  <NutritionistDashboard />
-                </NutritionistRoute>
-              }
-            />
-
-            {/* Lista de Pacientes */}
-            <Route
-              path="/nutri/patients"
-              element={
-                <NutritionistRoute>
-                  <PatientListScreen />
-                </NutritionistRoute>
-              }
-            />
-
-            {/* Cadastro de Paciente */}
-            <Route
-              path="/nutri/patients/new"
-              element={
-                <NutritionistRoute>
-                  <PatientRegisterScreen />
-                </NutritionistRoute>
-              }
-            />
-
-            {/* Outras rotas protegidas do nutricionista */}
-            <Route
-              path="/nutri/*"
-              element={
-                <NutritionistRoute>
-                  <NutritionistDashboard />
-                </NutritionistRoute>
-              }
-            />
-
-            {/* ================================
-                REDIRECIONAMENTOS
-                ================================ */}
-
-            {/* Raiz redireciona para login do paciente */}
-            <Route path="/" element={<Navigate to="/acesso-paciente" replace />} />
-
-            {/* 404 - Redireciona para login */}
-            <Route path="*" element={<Navigate to="/acesso-paciente" replace />} />
+            {/* FALLBACKS & REDIRECTS */}
+            <Route path="/login" element={<Navigate to="/" replace />} />
+            <Route path="/acesso-paciente" element={<Navigate to="/" replace />} />
+            <Route path="/acesso-nutricionista" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

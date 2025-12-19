@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRegistrationStore } from '../store/registrationStore';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, Users, DollarSign, ArrowRight } from 'lucide-react';
 
 export const FinancialSummaryStep: React.FC = () => {
-    const { branding, reset } = useRegistrationStore();
+    const { reset } = useRegistrationStore();
     const navigate = useNavigate();
 
     // Reset store on unmount or after leaving, but here we want to clear it when going to dashboard

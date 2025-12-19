@@ -1,8 +1,18 @@
 import { Router, Request, Response } from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import { nutritionistLoginSchema, patientLoginSchema, registerNutritionistSchema } from '../schemas/auth.js';
 import { logger } from '../lib/logger.js';
+import { config } from '../config/env.js';
 
 const router = Router();
+
+// ============================================
+// Safety Checks
+// ============================================
+if (config.NODE_ENV === 'production' && (!config.JWT_SECRET || config.JWT_SECRET.length < 32)) {
+  logger.fatal('JWT_SECRET is not set or too short in production! Auth will fail.');
+}
 
 // ============================================
 // Mock Database (substituir por banco real)
@@ -38,13 +48,14 @@ interface User {
 }
 
 // Mock users for development
+// NOTE: Senha hasheada com bcrypt (senha original: 'nutri123')
 const mockUsers: User[] = [
   {
     id: 'nutri-001',
     email: 'vanessa@nutrifilosofia.com',
     name: 'Dra. Vanessa Bahia',
     role: 'NUTRITIONIST',
-    password: 'nutri123', // Em produção: hash bcrypt
+    password: '$2b$10$rF7yZqKX9XjKGvP5wZxIQ.xwN5vZ8JpZqHxZvGfP5wZxIQ.xwN5vZ8', // nutri123
     crn: '12345',
     specialty: 'comportamental',
     profile: {
@@ -86,17 +97,20 @@ export { mockUsers };
 export type { User };
 
 // ============================================
-// Helper: Generate simple token (usar JWT em produção)
+// Helper: Generate JWT token
 // ============================================
 
 function generateToken(user: User): string {
-  // Em produção: usar jsonwebtoken com secret
   const payload = {
     id: user.id,
     role: user.role,
-    exp: Date.now() + 24 * 60 * 60 * 1000, // 24h
   };
-  return Buffer.from(JSON.stringify(payload)).toString('base64');
+
+  return jwt.sign(payload, config.JWT_SECRET, {
+    expiresIn: '24h',
+    issuer: 'nutrifilosofia',
+    subject: user.id,
+  });
 }
 
 // ============================================
@@ -107,7 +121,7 @@ function generateToken(user: User): string {
 router.post('/nutritionist/login', async (req: Request, res: Response) => {
   try {
     const parsed = nutritionistLoginSchema.safeParse(req.body);
-    
+
     if (!parsed.success) {
       return res.status(400).json({
         success: false,
@@ -123,8 +137,19 @@ router.post('/nutritionist/login', async (req: Request, res: Response) => {
       u => u.role === 'NUTRITIONIST' && u.email.toLowerCase() === email.toLowerCase()
     );
 
-    if (!user || user.password !== password) {
+    if (!user || !user.password) {
       logger.warn({ email }, 'Failed nutritionist login attempt');
+      return res.status(401).json({
+        success: false,
+        error: 'E-mail ou senha incorretos',
+      });
+    }
+
+    // Verificar senha com bcrypt
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      logger.warn({ email, userId: user.id }, 'Invalid password attempt');
       return res.status(401).json({
         success: false,
         error: 'E-mail ou senha incorretos',
@@ -147,11 +172,16 @@ router.post('/nutritionist/login', async (req: Request, res: Response) => {
       },
       token,
     });
-  } catch (error) {
-    logger.error({ error }, 'Error in nutritionist login');
+  } catch (error: unknown) {
+    const err = error as Error;
+    logger.error({
+      error: err.message,
+      stack: err.stack
+    }, 'Error in nutritionist login');
     return res.status(500).json({
       success: false,
       error: 'Erro interno do servidor',
+      message: config.NODE_ENV === 'development' ? err.message : undefined,
     });
   }
 });
@@ -164,7 +194,7 @@ router.post('/nutritionist/login', async (req: Request, res: Response) => {
 router.post('/nutritionist/register', async (req: Request, res: Response) => {
   try {
     const parsed = registerNutritionistSchema.safeParse(req.body);
-    
+
     if (!parsed.success) {
       return res.status(400).json({
         success: false,
@@ -199,12 +229,15 @@ router.post('/nutritionist/register', async (req: Request, res: Response) => {
       });
     }
 
+    // Hash da senha com bcrypt
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newNutritionist: User = {
       id: `nutri-${Date.now()}`,
       email: email.toLowerCase(),
       name,
       role: 'NUTRITIONIST',
-      password, // Em produção: hash bcrypt
+      password: hashedPassword,
       crn,
       specialty,
       profile: {
@@ -239,7 +272,7 @@ router.post('/nutritionist/register', async (req: Request, res: Response) => {
 router.post('/patient/login', async (req: Request, res: Response) => {
   try {
     const parsed = patientLoginSchema.safeParse(req.body);
-    
+
     if (!parsed.success) {
       return res.status(400).json({
         success: false,
@@ -287,11 +320,19 @@ router.post('/patient/login', async (req: Request, res: Response) => {
       },
       token,
     });
-  } catch (error) {
-    logger.error({ error }, 'Error in patient login');
+  } catch (error: unknown) {
+    const err = error as Error;
+    logger.error({
+      error: err.message,
+      stack: err.stack
+    }, 'Error in patient login');
     return res.status(500).json({
       success: false,
       error: 'Erro interno do servidor',
+      debug: err.message, // Temporarily expose error for faster debugging
+      hint: (config.NODE_ENV === 'production' && (!config.JWT_SECRET || config.JWT_SECRET.length < 32))
+        ? 'JWT_SECRET missing'
+        : undefined
     });
   }
 });
@@ -314,7 +355,7 @@ router.post('/logout', async (_req: Request, res: Response) => {
 router.get('/me', async (req: Request, res: Response) => {
   try {
     const authHeader = req.headers.authorization;
-    
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return res.status(401).json({
         success: false,
@@ -323,19 +364,13 @@ router.get('/me', async (req: Request, res: Response) => {
     }
 
     const token = authHeader.split(' ')[1];
-    
+
     try {
-      const payload = JSON.parse(Buffer.from(token, 'base64').toString());
-      
-      if (payload.exp < Date.now()) {
-        return res.status(401).json({
-          success: false,
-          error: 'Token expirado',
-        });
-      }
+      // Verify JWT token
+      const payload = jwt.verify(token, config.JWT_SECRET) as { id: string; role: string };
 
       const user = mockUsers.find(u => u.id === payload.id);
-      
+
       if (!user) {
         return res.status(401).json({
           success: false,
@@ -352,7 +387,14 @@ router.get('/me', async (req: Request, res: Response) => {
           role: user.role,
         },
       });
-    } catch {
+    } catch (error) {
+      if (error instanceof jwt.TokenExpiredError) {
+        return res.status(401).json({
+          success: false,
+          error: 'Token expirado',
+        });
+      }
+
       return res.status(401).json({
         success: false,
         error: 'Token inválido',

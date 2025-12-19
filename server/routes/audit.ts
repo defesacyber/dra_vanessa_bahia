@@ -4,7 +4,7 @@
 // ============================================
 
 import { Request, Response, NextFunction, Router } from 'express';
-import type { AuditEntry } from '../../src/types/concierge.js';
+import type { AuditEntry } from '../../types/concierge.js';
 import { logger } from '../lib/logger.js';
 
 const router = Router();

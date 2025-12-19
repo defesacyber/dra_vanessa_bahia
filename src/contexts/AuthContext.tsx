@@ -47,16 +47,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const loginAsNutritionist = async (credentials: LoginCredentials): Promise<AuthResponse> => {
     setState(prev => ({ ...prev, isLoading: true, error: null }));
-    
+
     try {
       const response = await fetch('/api/auth/nutritionist/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success && data.user) {
         const authData = { user: data.user, token: data.token };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(authData));
@@ -72,7 +72,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setState(prev => ({ ...prev, isLoading: false, error: data.error || 'Erro ao fazer login' }));
         return { success: false, error: data.error || 'Credenciais inválidas' };
       }
-    } catch (error) {
+    } catch {
       const message = 'Erro de conexão. Tente novamente.';
       setState(prev => ({ ...prev, isLoading: false, error: message }));
       return { success: false, error: message };
@@ -81,19 +81,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const loginAsPatient = async (credentials: PatientAccessCredentials): Promise<AuthResponse> => {
     setState(prev => ({ ...prev, isLoading: true, error: null }));
-    
+
     try {
       const response = await fetch('/api/auth/patient/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(credentials),
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success && data.user) {
         const authData = { user: data.user, token: data.token };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(authData));        setToken(data.token);        setState({
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(authData)); setToken(data.token); setState({
           user: data.user,
           isAuthenticated: true,
           isLoading: false,
@@ -101,10 +101,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         });
         return { success: true, user: data.user, token: data.token };
       } else {
-        setState(prev => ({ ...prev, isLoading: false, error: data.error || 'Erro ao fazer login' }));
-        return { success: false, error: data.error || 'Código de acesso inválido' };
+        const errorMsg = data.debug ? `${data.error} (${data.debug})` : (data.error || 'Erro ao fazer login');
+        setState(prev => ({ ...prev, isLoading: false, error: errorMsg }));
+        return { success: false, error: errorMsg };
       }
-    } catch (error) {
+    } catch {
       const message = 'Erro de conexão. Tente novamente.';
       setState(prev => ({ ...prev, isLoading: false, error: message }));
       return { success: false, error: message };

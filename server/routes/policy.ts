@@ -11,7 +11,7 @@ import type {
   Macros,
   PolicyConfig,
   FoodCatalogItem
-} from '../../src/types/concierge.js';
+} from '../../types/concierge.js';
 
 const router = Router();
 

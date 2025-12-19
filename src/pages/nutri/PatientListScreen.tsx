@@ -27,17 +27,12 @@ export const PatientListScreen: React.FC = () => {
 
   const { getAuthHeaders } = useAuth();
 
-  useEffect(() => {
-    fetchPatients();
-  }, []);
-
-  const fetchPatients = async () => {
+  const fetchPatients = React.useCallback(async () => {
     try {
       const response = await fetch('/api/v1/patients', {
         headers: getAuthHeaders(),
       });
       const data = await response.json();
-
       if (data.success) {
         setPatients(data.patients || []);
       } else {
@@ -48,7 +43,11 @@ export const PatientListScreen: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [getAuthHeaders]);
+
+  useEffect(() => {
+    fetchPatients();
+  }, [fetchPatients]);
 
   const copyAccessCode = (code: string) => {
     navigator.clipboard.writeText(code);

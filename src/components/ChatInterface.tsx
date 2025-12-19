@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import React, { useState, useRef, useEffect } from 'react';
 import { ChatMessage, PhilosophicalLabel } from '../types';
 import { chatWithPhilosopher } from '../services/geminiService';
@@ -10,7 +11,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ analysisContext })
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<any>(null);
 
   useEffect(() => {
     if (scrollRef.current) {

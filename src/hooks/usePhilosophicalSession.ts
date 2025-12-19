@@ -19,8 +19,8 @@ export const usePhilosophicalSession = () => {
                 } else {
                     localStorage.removeItem('philo_history');
                 }
-            } catch (e) {
-                localStorage.removeItem('philo_history');
+                } catch {
+                    localStorage.removeItem('philo_history');
             }
         }
     }, []);

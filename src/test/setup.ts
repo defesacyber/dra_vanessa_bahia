@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/vitest';
+declare var global: { [key: string]: unknown };
 import { vi, afterEach } from 'vitest';
 
 // Mock localStorage

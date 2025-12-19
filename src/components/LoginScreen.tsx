@@ -1,3 +1,4 @@
+/// <reference lib="dom" />
 import React from 'react';
 
 interface LoginScreenProps {
@@ -15,7 +16,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin }) => {
               alt="Dra. Vanessa Bahia" 
               className="w-full h-full object-cover"
               onError={(e) => {
-                const target = e.target as HTMLImageElement;
+                const target = e.target as any;
                 target.style.display = 'none';
                 if (target.parentElement) {
                   target.parentElement.innerHTML = '<span class="text-4xl">👩‍⚕️</span>';
