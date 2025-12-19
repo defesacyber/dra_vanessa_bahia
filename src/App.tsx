@@ -14,12 +14,15 @@ const NutritionistDashboard = lazy(() => import('./pages/nutri/NutritionistDashb
 const PatientListScreen = lazy(() => import('./pages/nutri/PatientListScreen'));
 const PatientRegisterScreen = lazy(() => import('./pages/nutri/PatientRegisterScreen'));
 
+// Lazy load pages - Misc
+const LandingPage = lazy(() => import('./pages/LandingPage'));
+
 // Loading fallback
 const LoadingFallback: React.FC = () => (
-  <div className="min-h-screen flex items-center justify-center bg-stone-50">
+  <div className="min-h-screen flex items-center justify-center bg-tempera-ivory">
     <div className="text-center">
-      <div className="w-12 h-12 border-4 border-emerald-300 border-t-emerald-600 rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-stone-600">Carregando...</p>
+      <div className="w-12 h-12 border-4 border-tempera-olive border-t-tempera-gold rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-tempera-deep font-serif italic">Carregando...</p>
     </div>
   </div>
 );
@@ -30,12 +33,16 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
-            {/* ================================
-                ROTAS DO PACIENTE (/login, /app/*)
-                ================================ */}
+            {/* Landing Page (Dual Login) */}
+            <Route path="/" element={<LandingPage />} />
 
-            {/* Login do Paciente - SEM menção a nutricionista */}
+            {/* Direct Access Routes (keep for backwards compatibility) */}
             <Route path="/acesso-paciente" element={<PatientLoginScreen />} />
+            <Route path="/acesso-nutricionista" element={<NutritionistLoginScreen />} />
+
+            {/* ================================
+                ROTAS DO PACIENTE (/app/*)
+                ================================ */}
 
             {/* Área do Paciente - Protegida por role PATIENT */}
             <Route
@@ -58,9 +65,6 @@ const App: React.FC = () => {
             {/* ================================
                 ROTAS DA NUTRICIONISTA (/nutri/*)
                 ================================ */}
-
-            {/* Login da Nutricionista - Portal genérico */}
-            <Route path="/acesso-nutricionista" element={<NutritionistLoginScreen />} />
 
             {/* Cadastro de Nutricionista */}
             <Route path="/nutri/register" element={<NutritionistRegisterScreen />} />
@@ -109,11 +113,8 @@ const App: React.FC = () => {
                 REDIRECIONAMENTOS
                 ================================ */}
 
-            {/* Raiz redireciona para login do paciente */}
-            <Route path="/" element={<Navigate to="/acesso-paciente" replace />} />
-
-            {/* 404 - Redireciona para login */}
-            <Route path="*" element={<Navigate to="/acesso-paciente" replace />} />
+            {/* 404 - Redireciona para a landing dual */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
       </BrowserRouter>
