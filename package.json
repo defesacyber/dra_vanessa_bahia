@@ -7,7 +7,7 @@
     "dev": "concurrently \"tsx server/index.ts\" \"vite\"",
     "build": "tsc -p tsconfig.server.json && vite build",
     "preview": "vite preview",
-    "start": "NODE_ENV=production node dist/server/server/index.js",
+    "start": "NODE_ENV=production node dist/server/index.js",
     "lint": "eslint src server --ext .ts,.tsx",
     "lint:fix": "eslint src server --ext .ts,.tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,json,css}\" \"server/**/*.ts\"",

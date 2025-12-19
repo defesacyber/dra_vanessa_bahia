@@ -37,8 +37,6 @@
       "@types": [
         "src/types.ts"
       ]
-    },
-    "allowImportingTsExtensions": true,
-    "noEmit": true
+    }
   }
 }
