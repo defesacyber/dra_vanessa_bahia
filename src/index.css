@@ -1,9 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-brand-900: #162C1C;
+  --color-brand-600: #67743F;
+
+  --color-neutral-50: #FEF7E2;
+  --color-neutral-100: #FDFBE8;
+  --color-neutral-200: #E6E0CE;
+  --color-neutral-300: #C1BFAC;
+
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --font-serif: "Cormorant Garamond", "serif";
+
+  --shadow-premium: 0 20px 50px -12px rgba(22, 44, 28, 0.08);
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.03);
+
+  --animate-fade-in: fadeIn 0.8s ease-out forwards;
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
 
 @layer base {
   html {
@@ -15,7 +54,12 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif tracking-tight text-brand-900;
   }
 }
@@ -26,14 +70,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: theme('colors.neutral.50');
+  background: #FEF7E2;
+  /* neutral-50 */
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.neutral.300');
+  background: #C1BFAC;
+  /* neutral-300 */
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.brand.600');
+  background: #67743F;
+  /* brand-600 */
 }
