@@ -44,7 +44,8 @@ const App: React.FC = () => {
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             {/* PUBLIC ROUTES */}
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<LoginPortal />} />
+            <Route path="/inicio" element={<Home />} />
             <Route path="/metodo" element={<Approach />} />
             <Route path="/programas" element={<Programs />} />
             <Route path="/para-empresas" element={<B2B />} />
@@ -52,7 +53,6 @@ const App: React.FC = () => {
             <Route path="/conteudos" element={<Blog />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contato" element={<Contact />} />
-            <Route path="/login" element={<LoginPortal />} />
 
             <Route path="/privacidade" element={<Suspense fallback={<LoadingFallback />}><PrivacyPage /></Suspense>} />
             <Route path="/termos" element={<Suspense fallback={<LoadingFallback />}><TermsPage /></Suspense>} />
@@ -69,8 +69,9 @@ const App: React.FC = () => {
             <Route path="/nutri/*" element={<NutritionistRoute><NutritionistDashboard /></NutritionistRoute>} />
 
             {/* FALLBACKS & REDIRECTS */}
-            <Route path="/acesso-paciente" element={<Navigate to="/login" replace />} />
-            <Route path="/acesso-nutricionista" element={<Navigate to="/login" replace />} />
+            <Route path="/login" element={<Navigate to="/" replace />} />
+            <Route path="/acesso-paciente" element={<Navigate to="/" replace />} />
+            <Route path="/acesso-nutricionista" element={<Navigate to="/" replace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>

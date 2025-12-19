@@ -36,7 +36,7 @@ export const Navbar: React.FC = () => {
         >
             <Container className="flex items-center justify-between">
                 {/* LOGO */}
-                <Link to="/" className="flex items-center gap-3">
+                <Link to="/inicio" className="flex items-center gap-3">
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Leaf_icon.svg"
                         alt="Têmpera Logo"
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
                         </Link>
                     ))}
                     <div className="h-6 w-px bg-neutral-200 mx-2" />
-                    <Link to="/login" className="text-sm font-medium text-brand-900/80 hover:text-brand-900">Login</Link>
+                    <Link to="/" className="text-sm font-medium text-brand-900/80 hover:text-brand-900">Login</Link>
                     <Button size="sm" onClick={() => window.open('https://wa.me/5500000000000', '_blank')}>
                         Agendar Avaliação
                     </Button>
@@ -91,7 +91,7 @@ export const Navbar: React.FC = () => {
                         {link.label}
                     </Link>
                 ))}
-                <Link to="/login" className="text-xl font-serif text-brand-900">Login Área Restrita</Link>
+                <Link to="/" className="text-xl font-serif text-brand-900">Login Área Restrita</Link>
                 <Button size="lg" className="w-full">
                     Agendar Avaliação
                 </Button>

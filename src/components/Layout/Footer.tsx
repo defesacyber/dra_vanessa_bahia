@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
             <Container className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {/* BRAND */}
                 <div className="space-y-6">
-                    <Link to="/" className="flex items-center gap-3">
+                    <Link to="/inicio" className="flex items-center gap-3">
                         <img
                             src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Leaf_icon.svg"
                             alt="Têmpera Logo"
