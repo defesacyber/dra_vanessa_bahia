@@ -49,4 +49,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget --no-verbose --tries=1 --spider http://localhost:3001/health || exit 1
 
 # Start production server
-CMD ["node", "--experimental-strip-types", "server/index.ts"]
+CMD ["node", "dist/server/server/index.js"]

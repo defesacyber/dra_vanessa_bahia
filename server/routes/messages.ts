@@ -4,7 +4,7 @@
 // ============================================
 
 import { Request, Response, Router } from 'express';
-import type { DailyMessage, ToneProfile } from '../../src/types/concierge.js';
+import type { DailyMessage, ToneProfile } from '../../types/concierge.js';
 
 const router = Router();
 
