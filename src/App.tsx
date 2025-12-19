@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { PremiumNavbar } from './components/PremiumNavbar';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import { PatientRoute, NutritionistRoute } from './components/RouteGuards';
@@ -41,6 +42,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <PremiumNavbar />
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             {/* PUBLIC ROUTES */}
