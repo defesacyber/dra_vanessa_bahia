@@ -11,6 +11,13 @@ const envSchema = z.object({
   PORT: z.coerce.number().default(3001),
   GEMINI_API_KEY: z.string().min(1, 'GEMINI_API_KEY is required'),
   
+  // JWT Secret - required for token signing
+  JWT_SECRET: z.string().min(32, 'JWT_SECRET must be at least 32 characters').default(
+    process.env.NODE_ENV === 'production' 
+      ? '' // Force error in production if not set
+      : 'dev-insecure-secret-change-in-production-' + Math.random().toString(36)
+  ),
+  
   // Rate limiting
   RATE_LIMIT_WINDOW_MS: z.coerce.number().default(900000), // 15 minutes
   RATE_LIMIT_MAX_REQUESTS: z.coerce.number().default(50),
