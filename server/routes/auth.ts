@@ -165,11 +165,15 @@ router.post('/nutritionist/login', async (req: Request, res: Response) => {
       },
       token,
     });
-  } catch (error) {
-    logger.error({ error }, 'Error in nutritionist login');
+  } catch (error: any) {
+    logger.error({
+      error: error.message,
+      stack: error.stack
+    }, 'Error in nutritionist login');
     return res.status(500).json({
       success: false,
       error: 'Erro interno do servidor',
+      message: config.NODE_ENV === 'development' ? error.message : undefined,
     });
   }
 });
@@ -308,11 +312,15 @@ router.post('/patient/login', async (req: Request, res: Response) => {
       },
       token,
     });
-  } catch (error) {
-    logger.error({ error }, 'Error in patient login');
+  } catch (error: any) {
+    logger.error({
+      error: error.message,
+      stack: error.stack
+    }, 'Error in patient login');
     return res.status(500).json({
       success: false,
       error: 'Erro interno do servidor',
+      debug: error.message, // Temporarily expose error for faster debugging
     });
   }
 });
